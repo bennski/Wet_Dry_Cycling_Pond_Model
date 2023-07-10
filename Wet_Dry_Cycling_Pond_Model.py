@@ -107,16 +107,16 @@ m_dot_haze_05_min = 4.9e11
 #m_dot_haze_5_max = 1.e11*7.
 m_dot_haze_05_max = 8.9e14
 
-C_Adenine_5 = 1.5e-6 #1.5ppm
-C_Adenine_05_max = 0.6e-6
-C_Adenine_05_min = 0.2e-6
+C_Adenine_5 = 2.1e-6 #2.1ppm
+C_Adenine_05_max = 6.3e-6
+C_Adenine_05_min = 4.6e-6
 
-C_Guanine_05_max = 0.3e-6
-C_Cytosine_05_max = 0.16e-6 #using high methane experiment as upper limit
-C_Uracil_05_max = 3.4e-6
-C_Thymine_05_max = 0.6e-6
-C_Hypoxanthine_05_max = 3.5e-6
-C_Xanthine_05_max = 0.8e-6
+C_Guanine_05_max = 17.5e-6 #using high methane experiment as upper limit
+C_Cytosine_05_max = 3.46e-6
+C_Uracil_05_max = 4.e-6
+C_Thymine_05_max = 1.7e-6
+C_Hypoxanthine_05_max = 21.4e-6
+C_Xanthine_05_max = 65e-6 #using high methane experiment as upper limit
 
 #m_dot_Adenine_haze5 = m_dot_haze_5*C_Adenine_5
 m_dot_Adenine_haze05_min = m_dot_haze_05_min*C_Adenine_05_min
@@ -786,14 +786,14 @@ p5, = ax1.plot(t, C_COL_65_Met*1e6/mu_Adenine, linestyle='--', color='#9d620c', 
                
 #p6, = ax1.plot(t, C_IDN_65_Adenine_haze5*1e6/mu_Adenine, linestyle='-', color='#a30313', lw=3.5, label='Organic Hazes (5% methane)') 
   
-p7 = ax1.fill_between(t, C_IDN_65_Adenine_haze05_min*1e6/mu_Adenine, C_IDN_65_Adenine_haze05_max*1e6/mu_Adenine, linestyle='-', hatch = '/',lw=3.5, label='Organic Hazes (0.5% methane)',alpha=0.3)                       
+p7 = ax1.fill_between(t, C_IDN_65_Adenine_haze05_min*1e6/mu_Adenine, C_IDN_65_Adenine_haze05_max*1e6/mu_Adenine, linestyle='-', hatch = '/',lw=3.5, color="#999999", label='Organic Hazes (0.5% methane)',alpha=0.4)                       
      
 secax = ax1.secondary_yaxis('right', functions=(molar2mass, mass2molar))
 
 secax.set_ylabel("Adenine Mass Fraction (ppb)",fontsize=18)
 #secax.set_yticklabels([1e-7,1e-5,1e-3,1e-1,1e1,1e3],fontsize=18)
 
-ax1.set_ylim(1e-11,20.)
+ax1.set_ylim(1e-11,50.)
 
 #ax1.text(0.222, 0.742, "1", ha="center", size=14, transform=ax1.transAxes, bbox=dict(boxstyle="circle", fc="w", ec="k"))
 #ax1.text(0.247, 0.702, "2", ha="center", size=14, transform=ax1.transAxes, bbox=dict(boxstyle="circle", fc="w", ec="k"))
@@ -805,17 +805,17 @@ ax1.set_yscale('log')
   
 ax2.plot(t, C_IDN_65_Uracil_haze05_max*1e6/mu_Uracil, linestyle='-', color='#AA3377', lw=3.5, label='Uracil')     
 ax2.plot(t, C_IDN_65_Hypoxanthine_haze05_max*1e6/mu_hypoxanthine, linestyle='--', color='#66CCEE', lw=3.5, label='Hypoxanthine')  
-ax2.plot(t, C_IDN_65_Xanthine_haze05_max*1e6/mu_xanthine, linestyle='-', color='#EE6677', lw=3.5, label='Xanthine')   
+ax2.plot(t, C_IDN_65_Xanthine_haze05_max*1e6/mu_xanthine, linestyle='-', color='#EE6677', lw=3.5, label='Xanthine*')   
 ax2.plot(t, C_IDN_65_Thymine_haze05_max*1e6/mu_Thymine, linestyle='--', color='#BBBBBB', lw=3.5, label='Thymine')     
-ax2.plot(t, C_IDN_65_Guanine_haze05_max*1e6/mu_Guanine, linestyle='-', color='#4477AA', lw=3.5, label='Guanine')      
-ax2.plot(t, C_IDN_65_Cytosine_haze05_max*1e6/mu_Cytosine, linestyle='--', color='#CCBB44', lw=3.5, label='Cytosine*')    
+ax2.plot(t, C_IDN_65_Guanine_haze05_max*1e6/mu_Guanine, linestyle='-', color='#4477AA', lw=3.5, label='Guanine*')      
+ax2.plot(t, C_IDN_65_Cytosine_haze05_max*1e6/mu_Cytosine, linestyle='--', color='#CCBB44', lw=3.5, label='Cytosine')    
 
 
 ax2.set_yscale('log')
-ax2.set_ylim(1.e-3,1.2e0)
+ax2.set_ylim(1.e-2,20e0)
 
-ax2.text(-0.2,9.e-1,r"Maxima from organic hazes",fontweight='bold',fontsize=20)
-ax2.text(-0.2,7.e-1,r"Early Hadean, 0.5% CH$_4$",fontweight='bold',fontsize=20)
+ax2.text(-0.2,1.3e1,r"Maxima from organic hazes",fontweight='bold',fontsize=20)
+ax2.text(-0.2,1.e1,r"Early Hadean, 0.5% CH$_4$",fontweight='bold',fontsize=20)
 
 ax2.legend(loc=1,ncol=2,fontsize=16)
 
@@ -824,22 +824,22 @@ ax2.legend(loc=1,ncol=2,fontsize=16)
 ax1.set_xlabel('Time (yr)', fontsize=18)
 ax1.set_ylabel('Adenine Molar Concentration ($\mu$M)', fontsize=18)
 for tick in ax1.xaxis.get_major_ticks():
-    tick.label.set_fontsize(18) 
+    tick.label1.set_fontsize(18) 
 for tick in ax1.yaxis.get_major_ticks():
-    tick.label.set_fontsize(18)
+    tick.label1.set_fontsize(18)
     
 ax2.set_xlabel('Time (yr)', fontsize=18)
 ax2.set_ylabel('Nucleobase Molar Concentration ($\mu$M)', fontsize=18)
 for tick in ax2.xaxis.get_major_ticks():
-    tick.label.set_fontsize(18) 
+    tick.label1.set_fontsize(18) 
 for tick in ax2.yaxis.get_major_ticks():
-    tick.label.set_fontsize(18)
+    tick.label1.set_fontsize(18)
 
 secax.tick_params(axis='both',labelsize=18)
 
 ax1.text(-1.25, 1.7e1,'A)', fontsize=30, weight='bold', color='black')
-ax2.text(-1.2, 1.15e0,'B)', fontsize=30, weight='bold', color='black')
+ax2.text(-1.2, 1.52e1,'B)', fontsize=30, weight='bold', color='black')
 
 
 plt.tight_layout()
-plt.savefig('Nucleobase_Comparison_Multiple_Sources.png',dpi=300)
+plt.savefig('Nucleobase_Comparison_Multiple_Sources_2023.png',dpi=300)
